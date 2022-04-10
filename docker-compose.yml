@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  feecc-validator-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "0.0.0.0:8084:8084"
+    restart: always
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "~/.cache/pip/:/root/.cache/pip"
+    environment:
+      MONGO_CONNECTION_URL: ""  # Your MongoDB connection URI ending with /db-name
+      IPFS_GATEWAY_LINK: "https://gateway.ipfs.io/ipfs"
+      BLOCK_EXPLORER_LINK: "https://robonomics.subscan.io/extrinsic"

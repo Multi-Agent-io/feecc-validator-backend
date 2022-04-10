@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "feecc-validator-backend"
+version = "0.1.0"
+description = "A validation service for Feecc end users"
+authors = ["arseniiarsenii <arseniivelichko2@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.75.1"
+environ-config = "^22.1.0"
+motor = "^2.5.1"
+dnspython = "^2.2.1"
+uvicorn = "^0.17.6"
+loguru = "^0.6.0"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.942"
+flake8 = "^4.0.1"
+black = "^22.3.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+exclude = "test*"
+strict = true
+ignore_missing_imports  = true
+
+[tool.black]
+line-length = 120
