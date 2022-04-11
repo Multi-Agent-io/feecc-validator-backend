@@ -9,6 +9,3 @@ class KeyTypes(str, Enum):
     passport_ipfs_cid = "ipfs_cid"
     passport_short_url = "short_url"
     txn_hash = "txn_hash"
-
-
-print(KeyTypes.passport_ipfs_cid.name)
