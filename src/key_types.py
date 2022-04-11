@@ -6,6 +6,9 @@ class KeyTypes(str, Enum):
 
     uuid = "uuid"
     internal_id = "internal_id"
-    ipfs_cid = "ipfs_cid"
-    short_url = "short_url"
+    passport_ipfs_cid = "ipfs_cid"
+    passport_short_url = "short_url"
     txn_hash = "txn_hash"
+
+
+print(KeyTypes.passport_ipfs_cid.name)

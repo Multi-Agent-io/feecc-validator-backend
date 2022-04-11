@@ -55,7 +55,7 @@ class MongoDbWrapper:
         )
 
     async def get_unit_by_key(self, key_type: KeyTypes, key_value: str) -> Unit:
-        unit_dict = await self._find_item(key_type, key_value, self._unit_collection)
+        unit_dict = await self._find_item(key_type.name, key_value, self._unit_collection)
         if unit_dict is None:
-            raise UnitNotFoundError(f"Unit with {key_type}={key_value} not found")
+            raise UnitNotFoundError(f"Unit with {key_type.name}={key_value} not found")
         return await self._get_unit_from_raw_db_data(unit_dict)
