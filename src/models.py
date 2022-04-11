@@ -4,7 +4,7 @@ import typing as tp
 
 from pydantic import BaseModel
 
-IPFS_GATEWAY_LINK: str = os.getenv("IPFS_GATEWAY_LINK", "https://gateway.ipfs.io/ipfs")
+IPFS_DISPLAY_GATEWAY_LINK: str = os.getenv("IPFS_DISPLAY_GATEWAY_LINK", "https://gateway.ipfs.io/ipfs")
 BLOCK_EXPLORER_LINK: str = os.getenv("BLOCK_EXPLORER_LINK", "https://robonomics.subscan.io/extrinsic")
 
 
@@ -33,8 +33,24 @@ class Unit(BaseModel):
             self.txn_link = BLOCK_EXPLORER_LINK + "/" + self.txn_hash
 
         if self.passport_ipfs_cid is not None:
-            self.ipfs_link = IPFS_GATEWAY_LINK + "/" + self.passport_ipfs_cid
+            self.ipfs_link = IPFS_DISPLAY_GATEWAY_LINK + "/" + self.passport_ipfs_cid
 
 
 class UnitData(GenericResponse):
     unit_data: Unit
+
+
+class ProductionStage(BaseModel):
+    started_timestamp: str
+    ended_timestamp: str
+    videos: tp.Optional[tp.List[str]] = None
+
+
+class CertificateData(BaseModel):
+    unit_uuid: str
+    unit_name: str
+    production_stages: tp.List[ProductionStage]
+
+
+class CertificateResponse(GenericResponse):
+    certificate_data: CertificateData

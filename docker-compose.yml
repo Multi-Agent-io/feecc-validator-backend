@@ -13,5 +13,6 @@ services:
       - "~/.cache/pip/:/root/.cache/pip"
     environment:
       MONGO_CONNECTION_URL: ""  # Your MongoDB connection URI ending with /db-name
-      IPFS_GATEWAY_LINK: "https://gateway.ipfs.io/ipfs"
+      IPFS_DISPLAY_GATEWAY_LINK: "https://gateway.ipfs.io/ipfs"
+      IPFS_PARSING_GATEWAY_LINK: "https://multiagent.mypinata.cloud/ipfs"
       BLOCK_EXPLORER_LINK: "https://robonomics.subscan.io/extrinsic"

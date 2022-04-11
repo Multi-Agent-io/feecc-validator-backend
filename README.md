@@ -2,10 +2,10 @@
 
 ## Overview
 
-Feecc Validator Backend is a microservice, designed to handle validating certificates and getting data associated 
-with the unit provided user has only one of the data pieces.
+Feecc Validator Backend is a microservice, designed to handle validating certificates and getting data associated with
+the unit provided user has only one of the data pieces.
 
-It provides a simple REST API interface to validate certificates issued by Feecc. 
+It provides a simple REST API interface to validate certificates issued by Feecc.
 
 Feecc Validator Backend comes as a part of the Feecc QA system - a Web3 enabled quality control system.
 
@@ -19,7 +19,7 @@ The app is supposed to be run in a Docker container and can be configured by set
 > but be warned: timezone is defined by mounting host `/etc/timezone` and `/etc/localtime` files inside the container,
 > which are not present on Windows machines, so you might end up with UTC time inside your container.
 
-Start by cloning the git repository onto your machine: 
+Start by cloning the git repository onto your machine:
 `git clone https://github.com/Multi-Agent-io/feecc-validator-backend.git`
 
 Enter the app directory and modify the `docker-compose.yml` file to your needs by changing the environment variables
@@ -43,5 +43,8 @@ To configure your Validator Backend deployment edit the environment variables, p
 ### Environment variables
 
 - `MONGO_CONNECTION_URL` - Your MongoDB connection URI ending with `/db-name`
-- `IPFS_GATEWAY_LINK` - IPFS web gateway base URL. Defaults to `https://gateway.ipfs.io/ipfs`
+- `IPFS_DISPLAY_GATEWAY_LINK` - IPFS web gateway base for end user access URL. Defaults
+  to `https://gateway.ipfs. io/ipfs`
+- `IPFS_PARSING_GATEWAY_LINK` - IPFS web gateway base URL for parsing files. Defaults
+  to `https://multiagent.mypinata.cloud/ipfs`
 - `BLOCK_EXPLORER_LINK` - Block explorer base URL. Defaults to `https://robonomics.subscan.io/extrinsic`
