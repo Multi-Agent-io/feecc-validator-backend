@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 
 from _logging import CONSOLE_LOGGING_CONFIG
-from database import MongoDbWrapper
+from database import MongoDbWrapper, UnitNotFoundError
 from key_types import KeyTypes
 from models import GenericResponse, UnitData
 
@@ -45,6 +45,12 @@ async def get_unit_data(key_type: KeyTypes, key_value: str) -> tp.Union[UnitData
             status_code=status.HTTP_200_OK,
             detail="Requested unit retrieved",
             unit_data=unit,
+        )
+
+    except UnitNotFoundError as e:
+        return GenericResponse(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e),
         )
 
     except Exception as e:
