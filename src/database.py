@@ -30,7 +30,7 @@ class MongoDbWrapper:
         self._database: AsyncIOMotorDatabase = self._client[db_name]
 
         # collections
-        self._unit_collection: AsyncIOMotorCollection = self._database["Unit-data"]
+        self._unit_collection: AsyncIOMotorCollection = self._database["unitData"]
 
         logger.info("Successfully connected to MongoDB")
 
