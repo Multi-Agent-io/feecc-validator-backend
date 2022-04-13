@@ -22,7 +22,7 @@ class Unit(BaseModel):
     passport_short_url: tp.Optional[str]
     passport_ipfs_cid: tp.Optional[str]
     serial_number: tp.Optional[str]
-    txn_hash: tp.Optional[str]
+    txn_hash: tp.Optional[str] = None
     ipfs_link: tp.Optional[str] = None
     txn_link: tp.Optional[str] = None
 
