@@ -1,3 +1,4 @@
+import os
 import typing as tp
 
 from loguru import logger
@@ -7,12 +8,12 @@ from motor.motor_asyncio import (
     AsyncIOMotorDatabase,
 )
 
-from _db_utils import _get_database_client, _get_database_name
+from _db_utils import _get_database_client
 from models import Unit
 from key_types import KeyTypes
 
 Document = tp.Dict[str, tp.Any]
-
+MONGO_DB_NAME: str = os.getenv("MONGO_DB_NAME")
 
 class UnitNotFoundError(BaseException):
     pass
@@ -26,7 +27,7 @@ class MongoDbWrapper:
         logger.info("Trying to connect to MongoDB")
 
         self._client: AsyncIOMotorClient = _get_database_client()
-        db_name: str = _get_database_name()
+        db_name: str = MONGO_DB_NAME
         self._database: AsyncIOMotorDatabase = self._client[db_name]
 
         # collections
