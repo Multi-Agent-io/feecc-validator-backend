@@ -12,8 +12,20 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "~/.cache/pip/:/root/.cache/pip"
     environment:
-      MONGO_CONNECTION_URL: ""  # Your MongoDB connection URI ending with /db-name
-      MONGO_DB_NAME: ""
+      MONGO_CONNECTION_URL: "mongodb+srv://test-stand-1:DqK04Ml6P921U35L@db-mongodb-feecc-endostars-73c0f452.mongo.ondigitalocean.com/feeccTest?tls=true&authSource=admin&replicaSet=db-mongodb-feecc-endostars&tlsCAFile=./ca-certificate.crt"  # Your MongoDB connection URI ending with /db-name
+      MONGO_DB_NAME: "feeccTest"
       IPFS_DISPLAY_GATEWAY_LINK: "https://gateway.ipfs.io/ipfs"
       IPFS_PARSING_GATEWAY_LINK: "https://multiagent.mypinata.cloud/ipfs"
       BLOCK_EXPLORER_LINK: "https://robonomics.subscan.io/extrinsic"
+    networks:
+      feecc-validator:
+        ipv4_address: 10.5.0.2
+
+networks:
+  feecc-validator:
+    driver: bridge
+    name: feecc-validator
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
