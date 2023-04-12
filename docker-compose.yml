@@ -17,3 +17,15 @@ services:
       IPFS_DISPLAY_GATEWAY_LINK: "https://gateway.ipfs.io/ipfs"
       IPFS_PARSING_GATEWAY_LINK: "https://multiagent.mypinata.cloud/ipfs"
       BLOCK_EXPLORER_LINK: "https://robonomics.subscan.io/extrinsic"
+    networks:
+      feecc-validator:
+        ipv4_address: 10.5.0.2
+
+networks:
+  feecc-validator:
+    driver: bridge
+    name: feecc-validator
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
